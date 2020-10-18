@@ -2,7 +2,7 @@
 // create variable for time, edit format and push to new variable
 
 var time = moment();
-var date = time.format("MM/DD/YYYY");
+var date = time.format("MMMM Do, YYYY");
 var hour = moment().hour();
 
 $("#currentDay").text("Today's Date is " + date);
@@ -26,7 +26,7 @@ function currentTime() {
             scheduleHour === hour) {
             $(currentHour).attr("class", "row present");
         }
-        
+
         else if (
             scheduleHour < hour) {
             $(currentHour).attr("class", "row past");
@@ -34,9 +34,9 @@ function currentTime() {
     }
 } currentTime();
 
+// Step 3: capture user input and save to local storage
 $(document).ready(function () {
 
-    // Step 3: capture user input and save to local storage
     $(".saveBtn").on("click", function () {
 
         // check for button response
@@ -46,9 +46,11 @@ $(document).ready(function () {
         var addEvent = $(this).attr("data-value");
 
         var eventInput = $(addEvent).val();
+        console.log(addEvent);
 
         // save input to local storage
         localStorage.setItem(addEvent, eventInput);
+        console.log(eventInput);
     });
 
     // Step 4: loop through local storage to refresh page with events from local storage
@@ -56,9 +58,9 @@ $(document).ready(function () {
     var timeBlock = ["#8", "#9", "#10", "#11", "#12", "#13", "#14", "#15", "#16", "#17", "#18"];
 
     for (let i = 0; i < timeBlock.length; i++) {
-        let saved = $(".saveBtn");
+        let saved = $(".event");
 
-        console.log("show event");
+        console.log(saved);
 
         $(timeBlock[i]).val(localStorage.getItem(timeBlock[i]));
     };
