@@ -1,41 +1,41 @@
 // Step 1: use moment to display current date & time
 // create variable for time, edit format and push to new variable
-
-var time = moment();
-var date = time.format("MMMM Do, YYYY");
-var hour = moment().hour();
-
-$("#currentDay").text("Today's Date is " + date);
-
-// Step 2: display past, current, and upcoming times in different colors
-// loop through current time to add highlight attributes to appropriate hours
-
-function currentTime() {
-    for (let i = 8; i < 19; i++) {
-
-        var currentHour = "#" + i;
-        var scheduleHour = parseInt($(currentHour).attr("id"));
-        $(currentHour).removeClass();
-
-        if (
-            scheduleHour > hour) {
-            $(currentHour).attr("class", "row future");
-        }
-
-        else if (
-            scheduleHour === hour) {
-            $(currentHour).attr("class", "row present");
-        }
-
-        else if (
-            scheduleHour < hour) {
-            $(currentHour).attr("class", "row past");
-        }
-    }
-} currentTime();
-
-// Step 3: capture user input and save to local storage
 $(document).ready(function () {
+
+    var time = moment();
+    var date = time.format("MMMM Do, YYYY");
+    var hour = moment().hour();
+
+    $("#currentDay").text("Today's Date is " + date);
+
+    // Step 2: display past, current, and upcoming times in different colors
+    // loop through current time to add highlight attributes to appropriate hours
+
+    function currentTime() {
+        for (let i = 8; i < 19; i++) {
+
+            var currentHour = "#" + i;
+            var scheduleHour = parseInt($(currentHour).attr("id"));
+            $(currentHour).removeClass();
+
+            if (
+                scheduleHour > hour) {
+                $(currentHour).attr("class", "row future");
+            }
+
+            else if (
+                scheduleHour === hour) {
+                $(currentHour).attr("class", "row present");
+            }
+
+            else if (
+                scheduleHour < hour) {
+                $(currentHour).attr("class", "row past");
+            }
+        }
+    } currentTime();
+
+    // Step 3: capture user input and save to local storage
 
     $(".saveBtn").on("click", function () {
 
@@ -59,7 +59,6 @@ $(document).ready(function () {
 
     for (let i = 0; i < timeBlock.length; i++) {
         let saved = $(".event");
-
         console.log(saved);
 
         $(timeBlock[i]).val(localStorage.getItem(timeBlock[i]));
