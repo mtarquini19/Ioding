@@ -31,8 +31,8 @@ $(document).ready(function () {
             else if (
                 scheduleHour < hour) {
                 $(currentHour).attr("class", "row past");
-            }
-        }
+            };
+        };
     } currentTime();
 
     // Step 3: capture user input and save to local storage
@@ -45,18 +45,19 @@ $(document).ready(function () {
         // take input from clicked button
         var addEvent = $(this).attr("data-value");
 
-        var eventInput = $(addEvent).val();
+        var input = $(addEvent).val();
         console.log(addEvent);
 
         // save input to local storage
-        localStorage.setItem(addEvent, eventInput);
-        console.log(eventInput);
+        localStorage.setItem(addEvent, input);
+        console.log(input);
     });
 
     // Step 4: loop through local storage to refresh page with events from local storage
     // define array containing hour blocks
     var timeBlock = ["#8", "#9", "#10", "#11", "#12", "#13", "#14", "#15", "#16", "#17", "#18"];
 
+    // loop through local storage to display inputs
     for (let i = 0; i < timeBlock.length; i++) {
         let saved = $(".event");
         console.log(saved);
