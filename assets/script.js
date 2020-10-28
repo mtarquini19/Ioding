@@ -45,8 +45,8 @@ $(document).ready(function () {
         // take input from clicked button
         var addEvent = $(this).attr("data-value");
 
-        var input = $(addEvent).val();
-        console.log(addEvent);
+        var input = $(this).siblings(".event").val();
+        console.log(input);
 
         // save input to local storage
         localStorage.setItem(addEvent, input);
@@ -55,14 +55,14 @@ $(document).ready(function () {
 
     // Step 4: loop through local storage to refresh page with events from local storage
     // define array containing hour blocks
-    var timeBlock = ["#8", "#9", "#10", "#11", "#12", "#13", "#14", "#15", "#16", "#17", "#18"];
+    // var timeBlock = ["#8", "#9", "#10", "#11", "#12", "#13", "#14", "#15", "#16", "#17", "#18"];
 
     // loop through local storage to display inputs
-    for (let i = 0; i < timeBlock.length; i++) {
-        let saved = $(".event");
-        console.log(saved);
-
-        $(timeBlock[i]).val(localStorage.getItem(timeBlock[i]));
+    for (let i = 8; i < 19; i++) {
+        // let saved = $(".event");
+        // console.log(saved);
+        $(`#${i} .event`).val(localStorage.getItem(`#${i}`))
+        // $(timeBlock[i]).val(localStorage.getItem(timeBlock[i]));
     };
 
 });
